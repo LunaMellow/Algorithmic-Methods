@@ -1,0 +1,83 @@
+﻿/**
+ *   Løsning til ekstraeksamen i AlgMet, vår 2023, oppgave 1.
+ *
+ *   @file     EX_V23_1.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+	h:4  i: 5    SmitTevern			(ingenting skjer)
+	h:4  i: 6    sEittMvern		'E' vandrer forbi 'M'
+	h:4  i: 7    seIttmVern			(ingenting skjer)
+	h:4  i: 8    seiEtmvTrn		'E' vandrer forbi 'T'
+	h:4  i: 9    ReieSmvtTn		'R' vandrer forbi 'T' og 'S'
+	h:4  i:10    reiesMvttN			(ingenting skjer)
+	h:1  i: 2    ERiesmvttn		'E' vandrer forbi 'R'
+	h:1  i: 3    EIResmvttn		'I' vandrer forbi 'R'
+	h:1  i: 4    EEIRsmvttn		'E' vandrer forbi 'R' og 'I'
+	h:1  i: 5    eeiRSmvttn			(ingenting skjer)
+	h:1  i: 6    eeIMRSvttn		'M' vandrer forbi 'S' og 'R'
+	h:1  i: 7    eeimrSVttn			(ingenting skjer)
+	h:1  i: 8    eeimrSTVtn		'T' vandrer forbi 'V'
+	h:1  i: 9    eeimrsTTVn		'T' vandrer forbi 'V'
+	h:1  i:10    eeiMNRSTTV		'N' vandrer forbi "RSTTV"
+
+
+
+
+
+OPPGAVE B:
+==========
+
+	"SMITTEVERN" satt inn i:
+
+        1)  Heap:      V T T R S E I E M N
+
+
+        2)  Binært søketre:        S
+                                 /   \
+                               M       T
+                             /   \       \
+                           I      R        T
+                          /      /          \
+                         E      N            V
+                          \
+                           E
+
+
+        3)  2-3-4 tre:            M  T
+                                /   |   \
+                              EEI  NRS   TV
+      
+
+
+        4)  Red-Black tre:         M
+                                /    \\
+                              E        T          (eller MT og TV rotert andre veien)
+                            // \\     /  \
+                           E     I   R    T
+                                   // \\   \\
+                                  N     S    V
+
+
+
+
+
+OPPGAVE C:
+==========
+
+	Merkle-tre med 7 blokker:
+
+                     H(1234+567)
+                 /                 \
+            H(12+34)            H(56+7)
+           /       \           /       \
+       H(1+2)    H(3+4)    H(5+6)    H(7)
+       /    \    /    \    /    \    /
+     H(1) H(2) H(3) H(4) H(5) H(6) H(7)
+     ----------------------------------
+      B1   B2   B3   B4   B5   B6   B7

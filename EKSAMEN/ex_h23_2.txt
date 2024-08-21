@@ -1,0 +1,69 @@
+﻿/**
+ *   Løsning til eksamen i AlgMet, desember 2023, oppgave 2.
+ *
+ *   @file     EX_H23_2.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+     Keyene:            S   K   U   R   S   N   U   T   E   N
+     k (alfabetnr):    19  11  21  18  19  14  21  20   5  14
+
+     Hash1 (M = 13):    6  11   8   5   6   1   8   7   5   1
+     Hash2:             1   1   3   2   1   2   3   4   3   2
+
+
+     Indeksene:         0   1   2   3   4   5   6   7   8   9  10  11  12
+                        -   -   -   -   -   -   S   -   -   -   -   -   -
+                        -   -   -   -   -   -   S   -   -   -   -   K   -
+                        -   -   -   -   -   -   S   -   U   -   -   K   -
+                        -   -   -   -   -   R   S   -   U   -   -   K   -
+                        -   -   -   -   -   R   S   S*  U   -   -   K   -
+                        -   N   -   -   -   R   S   S*  U   -   -   K   -
+                        -   N   -   -   U*  R   S   S*  U   -   -   K   -
+                        -   N   T*  -   U*  R   S   S*  U   -   -   K   -
+                        -   N   T*  -   U*  R   S   S*  U   -   E*  K   -
+                        -   N   T*  N*  U   R   S   S*  U   -   E*  K   -
+   
+              (* = bokstaver som hashes på plass ved bruk av hash2 også.)
+
+
+
+
+
+OPPGAVE B:
+==========
+
+     "gForeldre"-arrayen etterhvert:
+
+            A  B  C  D  E  F
+     F D:   -  -  -  F  -  1
+     A D:   F  -  -  F  -  2     Weight Balancing
+     D B:   F  F  -  F  -  3
+     C E:   F  F  1  F  C  3
+     E B:   F  F  F  F  C  5     Weight Balancing
+     A E:   F  F  F  F  F  5     Path Compression
+
+
+       Resulterende skog:      F
+                           / / | \ \ 
+                          A B  C  D E
+
+
+
+
+
+OPPGAVE C:
+==========
+
+     Vi har følgende bitmønster for bokstavene:
+                  E     K     R     S     U
+                 011   00    11    10   010
+
+
+     Bitstrømmen utgjør derfor følgende tekst/melding:  "SKURRESKRUE"
+

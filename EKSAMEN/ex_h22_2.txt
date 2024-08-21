@@ -1,0 +1,67 @@
+﻿/**
+ *   Løsning til eksamen i AlgMet, desember 2022, oppgave 2.
+ *
+ *   @file     EX_H22_2.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+     Fringen etterhvert (NVd = Nodenavn, Vekt, dad):
+
+                       F2d   A2f   C1a   G1c
+                       E2d   E2d   E2d   B1c   E1g
+                  D*   B2d   B2d   B2d   E2d   B1c  B1c
+
+
+
+   	Minimums spenntreet:     G -------- E
+                                /            
+                               C ---- B       D
+                                \            /
+                                 A -------- F
+
+
+
+
+
+OPPGAVE B:
+==========
+
+     13:     g =  2	h =  6 	   f =  8
+     20:     g =  4	h =  4	   f =  8
+     15:     g =  6	h =  4	   f = 10
+     17:     g =  8	h =  2     f = 10
+
+
+
+
+
+OPPGAVE C:
+==========
+                                    (Laget ut fra:  SULLBINGE ULL ULLA ULLEN)
+
+     Huffmans kodingstreet/trien:          35                      
+                                   /               \
+                               33                      34
+                            /      \               /        \
+                           U        31            32         L
+                                   /   \        /    \
+                                  E     29    ' '     30
+                                       /  \          /  \
+                                      A    28      27    N
+                                           / \    / \
+                                          G   B  S   I
+ 
+
+
+     Vi har følgende bitmønster for bokstavene:
+          ' '    A     B     E     G      I     L    N     S     U
+          100  0110  01111  010  01110  10101  11  1011  10100  00
+
+
+
+     Bitstrømmen er derfor følgende tekst/melding:  "SIL LUS BAG NSU"

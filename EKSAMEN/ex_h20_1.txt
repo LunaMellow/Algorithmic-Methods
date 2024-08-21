@@ -1,0 +1,86 @@
+﻿/**
+ *   Løsning til eksamen i AlgMet, november 2020, oppgave 1.
+ *
+ *   @file     EX_H20_1.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+    Infix-uttrykket:       ((((( 4 * 6 ) + ( 5 * 3 )) * ( 5 + 6 )) + 8 ) * 3 )
+
+    skrevet POSTFIX blir:   4 6 * 5 3 * + 5 6 + * 8 + 3 *
+
+                              
+                                       *           +
+    Stakken underveis:     _  *  _  +  +  +  _  *  *  *  _  +  _  *  _
+
+                           ('_' betyr at stakken er tom)
+
+
+
+
+
+OPPGAVE B:
+==========
+
+    "ALLERSISTE" satt inn i:
+
+        1)  Heap:   T S R S E L I A L E
+
+
+        2)  Binært søketre:        A
+                                     \
+                                       L
+                                     /   \
+                                    E     L
+                                     \     \
+                                      I     R
+                                     /       \
+                                    E         S
+                                               \
+                                                S
+                                                 \
+                                                  T
+
+
+        3)  2-3-4 tre:            E L R
+                                /  | |  \
+                               A  EI L  SST
+
+
+
+        4)  Red-Black tre:         L
+                                //   \\
+                                E      R
+                               / \    / \
+                              A   I  L   S     (eller EI rotert andre veien)
+                                 //    // \\
+                                 E     S   T
+
+
+
+
+
+OPPGAVE C:
+==========
+
+    "ALLERSISTE" sorteres vha. Quicksort.
+    Oversikten/tabellen for hver rekursive sortering blir da:
+    (NB: Partisjonselementet er skrevet med STOR bokstav,
+         mens resten er skrevet med små bokstaver.)
+
+
+                1  2  3  4  5  6  7  8  9 10
+    Initielt:   A  L  L  E  R  S  I  S  T  E
+
+                a  e  E  l  r  s  i  s  t  l
+                a  E
+                         i  L  s  l  s  t  r
+                               l  R  s  t  s
+                                     S  t  s
+                                        S  t
+

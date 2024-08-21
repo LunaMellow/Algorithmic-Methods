@@ -1,0 +1,143 @@
+﻿/**
+ *   Løsning til eksamen i AlgMet, august 2024, oppgave 2.
+ *
+ *   @file     EX_S24_2.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+    Når "W" fjernes:
+        - vil ingen av de to første situasjonene være aktuelle, derfor er
+        - den TREDJE setningen med  "else ......"  aktuell.
+          Her vil den sekvensielt etterfølgende noden ("X")
+          erstatte den som fjernes ("W").
+
+        - Treet etter at "W" er fjernet:
+
+                             S
+                          /     \
+                       ....       X
+                                /   \
+                               U     Y
+                              / \     \
+                             T   V     Z
+
+
+    Når "D" fjernes:
+        - "D" har et høyre barn uten sitt venstre barn, derfor er
+        - den ANDRE setningen med  "else if (!fjernes->right->left) ....."  aktuell.
+
+        - Treet under "H" etter at "D" er fjernet:
+
+                           H
+                         /   \
+                        E    ....
+                       / \
+                      B   F
+
+
+    Når "H" fjernes:
+        - vil ingen av de to første situasjonene være aktuelle, derfor er
+        - den TREDJE setningen med  "else ......"  aktuell.
+          Her vil den sekvensielt etterfølgende noden ("K")
+          erstatte den som fjernes ("H").
+
+        - Treet etter at "H" er fjernet:
+
+                             S
+                         /       \
+                      K          ....
+                   /     \
+                 D         N
+               /   \     /   \
+              B     E   L     P
+                     \       / \
+                      F     O   Q
+
+
+
+
+
+OPPGAVE B:
+==========
+
+    "gForeldre"-arrayen etterhvert:
+
+                A  B  C  D  E  F  G
+         B F:   -  1  -  -  -  B  -
+         C A:   C  1  1  -  -  B  -
+         C D:   C  1  2  C  -  B  -
+         B A:   C  C  4  C  -  B  -     Weight Balancing
+         E G:   C  C  4  C  1  B  E
+         G F:   C  C  6  C  C  B  E     Weight Balancing
+
+
+     Resulterende skog:      C
+                         / /   \ \ 
+                        A B    D  E
+                          |       |
+                          F       G
+
+
+
+
+
+OPPGAVE C:
+==========
+
+    SPURS SNIKER SEG SAKTE ETTER ARSENAL
+
+
+    Har bokstavfrekvensen:
+                    ' '   A   E   G   I   K   L   N   P   R   S   T   U
+                k    0    1   5   7   9  11  12  14  16  18  19  20  21
+       frekvens[k]   5    3   6   1   1   2   1   2   1   4   6   3   1
+
+
+
+    Dette medfører følgende forelder-array:
+                    ' '   A   E   G   I   K   L   N   P   R   S   T   U
+                k    0    1   5   7   9  11  12  14  16  18  19  20  21
+       frekvens[k]   5    3   6   1   1   2   1   2   1   4   6   3   1
+       forelder[k]  -34 -32  36  29 -28  31  28 -30 -27 -33 -35  32  27  
+
+                k   27  28  29  30  31  32  33  34  35  36  37  38
+       frekvens[k]   2   2   3   4   5   6   8  10  12  14  22  36
+       forelder[k]  30 -29 -31  33  34  35 -36  37 -37  38 -38   0
+
+
+ 
+    Tegnet som et tre/en trie:                38
+                                       /               \
+                                   36                      37
+                                /      \               /        \
+                               E        33            34        35
+                                       /  \         /    \     /  \
+                                      30   R     31      ' ' 32    S
+                                     /  \       /  \        /  \
+                                    27   N     K   29      T    A
+                                   /  \           /  \
+                                  U    P         G   28
+                                                     / \
+                                                    L   I
+
+
+
+    Vi får altså følgende bitmønster:
+                 ' '   A  E     G      I    K      L    N     P   R   S    T     U
+       freks[k]   5    3  6     1      1    2      1    2     1   4   6    3     1
+       bits     101 1101 00 10010 100111 1000 100110 0101 01001 011 111 1100 01000
+       kode[k]    5   13  0    18     39    8     38    5     9   3   7   12     8
+       len[k]     3    4  2     5      6    4      6    4     5   3   3    4     5
+
+
+
+    Totalt antall bit i kodet melding blir:
+        (5*3) + (3*4) + (6*2) + (1*5) + (1*6) + (2*4) + (1*6) +
+        (2*4) + (1*5) + (4*3) + (6*3) + (3*4) + (1*5)   =   124 bits
+                                                            ========
+
