@@ -170,6 +170,8 @@ int main()  {
     Vector <char> cVec;                //        fra OOProg, da med liten 'v'.
     Vector <string> sVec;
 
+    // HERE STARTS STRING VECTOR
+
     sVec.push_back("AA");    sVec.push_back("BB");
     sVec.push_front("CC");   sVec.push_front("DD");
     cout << "capacity: " << sVec.capacity()
@@ -201,6 +203,40 @@ int main()  {
     cout << "\n\nPr?ver enda 2x 'pop' til:\n";
     sVec.pop_back();  sVec.pop_front();
     sVec.display();
+
+    // HERE STARTS INT VECTOR
+
+    iVec.push_back(1); iVec.push_back(2);
+    iVec.push_front(3); iVec.push_front(4);
+    cout << "capacity: " << iVec.capacity()
+         << ",  size: " << iVec.size() << '\n';
+    iVec.display();
+    iVec.remove(3);   iVec.remove(0);
+    iVec.display();
+    iVec.pop_back();  iVec.pop_front();
+    iVec.display();
+
+    iVec.push_back(5);    iVec.push_back(6);
+    iVec.push_front(7);   iVec.push_front(8);
+    iVec.display();
+    iVec.insert(2, 9);  iVec.insert(0, 10);   iVec.insert(6, 11);
+    iVec.insert(7, 12);  iVec.insert(8, 13);
+    iVec.display();
+
+    iVec.set(6, 14;   iVec.set(3, 15);
+    iVec.display();
+
+    cout << "Nr.3: " << iVec.get(3) << " Nr.6: " << iVec.get(6) << "\n\n\n";
+
+    iVec.pop_back();  iVec.pop_front();
+    iVec.pop_back();  iVec.pop_front();
+    iVec.pop_back();  iVec.pop_front();
+    iVec.pop_back();  iVec.pop_front();
+    iVec.display();
+
+    cout << "\n\nPr?ver enda 2x 'pop' til:\n";
+    iVec.pop_back();  iVec.pop_front();
+    iVec.display();
 
     return 0;
 }
