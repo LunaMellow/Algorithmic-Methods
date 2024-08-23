@@ -146,7 +146,21 @@ class Vector {                       //  (finnes ikke direkte i Java!
 
 
       void resize(const int nyLengde) {   //  ?ker (om mulig) arrayens lengde.
-          //  OPPGAVE:  Lage innmaten .....
+          if (nyLengde > kapasitet) {
+
+              T* newArray = new T[nyLengde];
+
+              for (int i = 0; i < kapasitet; i++) {
+                  newArray[i] = data[i];
+              }
+
+              delete [] data;
+              data = newArray;
+              kapasitet = nyLengde;
+          }
+          else {
+              cout << "\nLength must be greater than current capacity\n";
+          }
       }
 
                                             //  Tilsvarer:   vec[pos] = verdi.
@@ -223,7 +237,7 @@ int main()  {
     iVec.insert(7, 12);  iVec.insert(8, 13);
     iVec.display();
 
-    iVec.set(6, 14;   iVec.set(3, 15);
+    iVec.set(6, 14);   iVec.set(3, 15);
     iVec.display();
 
     cout << "Nr.3: " << iVec.get(3) << " Nr.6: " << iVec.get(6) << "\n\n\n";
@@ -237,6 +251,8 @@ int main()  {
     cout << "\n\nPr?ver enda 2x 'pop' til:\n";
     iVec.pop_back();  iVec.pop_front();
     iVec.display();
+
+    iVec.resize(300);
 
     return 0;
 }
