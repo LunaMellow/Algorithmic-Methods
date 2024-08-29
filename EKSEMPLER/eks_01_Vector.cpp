@@ -91,8 +91,10 @@ class Vector {                       //  (finnes ikke direkte i Java!
                 data[pos] = t;                        //  Ny smettes inn.
                 antall++;                             //  Antall ?kes.
                 return true;                          //  Innsmetting lyktes.
-             }  else
-                 cout << "\nIndex out of bounds .....\n\n"; // Egen melding ??
+             } else {
+                 resize(kapasitet+100);
+             }
+
           } else
               cout << "\nVector is already full!\n\n";      // Egen melding ??
           return false;                               //  Ingen innsmetting.
