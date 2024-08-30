@@ -1,9 +1,9 @@
 /**
- *   Programeksempel nr 8 - Traverserer et binært tre på tre/fire ulike måter
+ *   Programeksempel nr 8 - Traverserer et binï¿½rt tre pï¿½ tre/fire ulike mï¿½ter
  *                          (vha stack og queue).
  *
- *   Eksempel som viser traversering (vha. stakk/kø) av et binært tre
- *   på en preorder, levelorder og inorder måte.
+ *   Eksempel som viser traversering (vha. stakk/kï¿½) av et binï¿½rt tre
+ *   pï¿½ en preorder, levelorder og inorder mï¿½te.
  *
  *   @file     EKS_08_TreTraversering.CPP
  *   @author   Frode Haug, NTNU
@@ -17,14 +17,14 @@ using namespace std;
 
 
 /**
- *  Node (med ID/key/data og venstre/høyre pekere til nodens barn,
- *        samt en 'settFor' som KAN brukes når det er nødvendig).
+ *  Node (med ID/key/data og venstre/hï¿½yre pekere til nodens barn,
+ *        samt en 'settFor' som KAN brukes nï¿½r det er nï¿½dvendig).
  */
 struct Node {
     char ID;
-    bool settFor;                     //  'settFor' brukes KUN ifm. postorder.
+    bool besokt;                     //  'settFor' brukes KUN ifm. postorder.
     Node *left, *right;               //  Initierende constructor:
-    Node(char id)  {  ID = id;  left = right = nullptr;   settFor = false;  }
+    Node(char id)  {  ID = id;  left = right = nullptr;   besokt = false;  }
 };
 
 
@@ -37,7 +37,7 @@ void  traverserPreorder(Node* node);
 
 
 stack <Node*> gStakk;                      ///<  Stakk med Node-pekere.
-queue <Node*> gKo;                         ///<  Kø med Node-pekere.
+queue <Node*> gKo;                         ///<  Kï¿½ med Node-pekere.
 
 
 /**
@@ -66,14 +66,14 @@ int main()  {
 
 
 /**
- *  Besøker (visit) en node - ved å kun skrive ut dens ID/key/data.
+ *  Besï¿½ker (visit) en node - ved ï¿½ kun skrive ut dens ID/key/data.
  *
- *  'besok'/'visit' kan være så mange ulike operasjoner.
- *   F.eks (som her) kun en ren utskrift. Men, det kan også være slikt som
- *   å endre dens (ulike) data, sammenligne datene med noe, gjøre beregninger,
- *   endre på nodens struktur, osv .....
+ *  'besok'/'visit' kan vï¿½re sï¿½ mange ulike operasjoner.
+ *   F.eks (som her) kun en ren utskrift. Men, det kan ogsï¿½ vï¿½re slikt som
+ *   ï¿½ endre dens (ulike) data, sammenligne datene med noe, gjï¿½re beregninger,
+ *   endre pï¿½ nodens struktur, osv .....
  *
- *  @param   node  -  Aktuell node som skal besøkes
+ *  @param   node  -  Aktuell node som skal besï¿½kes
  */
 void  besok(const Node* node) {
     cout << ' ' << node->ID;
@@ -81,7 +81,7 @@ void  besok(const Node* node) {
 
 
 /**
- *  Bygger et binært eksempel-tre.
+ *  Bygger et binï¿½rt eksempel-tre.
  *
  *  @return   Peker til det bygde treets rot
  */
@@ -115,74 +115,87 @@ Node* byggTre() {
 
 
 /**
- *  Traverserer/går gjennom et tre UNDER 'node'
- *  på en INORDER måte ved å bruke en stakk.
+ *  Traverserer/gï¿½r gjennom et tre UNDER 'node'
+ *  pï¿½ en INORDER mï¿½te ved ï¿½ bruke en stakk.
  *
- *   @param   node  -  Aktuell node å behandle
+ *   @param   node  -  Aktuell node ï¿½ behandle
  *   @see     besok(...)
  */
 void traverserInorder(Node* node) {
-   while (node  ||  !gStakk.empty()) { //  Reell node ELLER noe på stakken:
+   while (node  ||  !gStakk.empty()) { //  Reell node ELLER noe pï¿½ stakken:
         if (node) {                    //  Reell node:
-           gStakk.push(node);          //  Push'es på stakken.
-           node = node->left;          //  Går til venstre.
+           gStakk.push(node);          //  Push'es pï¿½ stakken.
+           node = node->left;          //  Gï¿½r til venstre.
         } else {                       //  'node' == nullptr:
            node = gStakk.top();  gStakk.pop();  //  pop'er en node.
-           besok(node);                         //  Besøker den.
-           node = node->right;                  //  Går til høyre.
+           besok(node);                         //  Besï¿½ker den.
+           node = node->right;                  //  Gï¿½r til hï¿½yre.
         }
    }
 }
 
 
 /**
- *  Traverserer/går gjennom et tre UNDER 'node'
- *  på en LEVELORDER måte ved å bruke en kø.
+ *  Traverserer/gï¿½r gjennom et tre UNDER 'node'
+ *  pï¿½ en LEVELORDER mï¿½te ved ï¿½ bruke en kï¿½.
  *
- *   @param   node  -  Aktuell node å behandle
+ *   @param   node  -  Aktuell node ï¿½ behandle
  *   @see     besok(...)
  */
 void traverserLevelorder(Node* node) {
     if (node) {                                  //  Reell node:
-        gKo.push(node);                          //  Legger rota i køen.
+        gKo.push(node);                          //  Legger rota i kï¿½en.
         while (!gKo.empty()) {                   //  Fortsatt noder igjen:
-            node = gKo.front();   gKo.pop();     //  Tar ut første node.
-            besok(node);                         //  Besøker den.
+            node = gKo.front();   gKo.pop();     //  Tar ut fï¿½rste node.
+            besok(node);                         //  Besï¿½ker den.
             if (node->left)  gKo.push(node->left);  //  Legger evt. venstre og
-            if (node->right) gKo.push(node->right); //  høyre subtre BAKERST.
+            if (node->right) gKo.push(node->right); //  hï¿½yre subtre BAKERST.
         }
     }
 }
 
 
 /**
- *  Traverserer/går gjennom et tre UNDER 'node'
- *  på en POSTORDER måte ved å bruke en stakk.
+ *  Traverserer/gï¿½r gjennom et tre UNDER 'node'
+ *  pï¿½ en POSTORDER mï¿½te ved ï¿½ bruke en stakk.
  *
- *   @param   node  -  Aktuell node å behandle
+ *   @param   node  -  Aktuell node ï¿½ behandle
  *   @see     besok(...)
  */
 void traverserPostorder(Node* node) {
-
-//   LAG INNMATEN IFM. OPPGAVE NR.5
-
+	if (node) { // Hvis noden eksisterer
+    	gStakk.push(node); // Legg roten pÃ¥ stacken
+        while (!gStakk.empty()) { // Imens stacken har en node
+        	node = gStakk.top(); gStakk.pop(); // Sett nÃ¥verende node til toppen av stacken
+        	if (node->besokt) { // Ved fÃ¸rste besÃ¸k vil verdien vÃ¦re false
+            	besok(node); // BesÃ¸k node om if statement true
+          	}
+          	else {
+            	node->besokt = true; // Sett besÃ¸kt lik true sÃ¥ neste iter gÃ¥r igjennom
+            	gStakk.push(node); // Legg nÃ¥vÃ¦rende node tilbake pÃ¥ stacken
+            	if (node->right) gStakk.push(node->right); // Legg til barn
+          		if (node->left)  gStakk.push(node->left); // Legg til barn
+          	}
+        }
+    }
 }
 
 
+
 /**
- *  Traverserer/går gjennom et tre UNDER 'node'
- *  på en PREORDER måte ved å bruke en stakk.
+ *  Traverserer/gï¿½r gjennom et tre UNDER 'node'
+ *  pï¿½ en PREORDER mï¿½te ved ï¿½ bruke en stakk.
  *
- *   @param   node  -  Aktuell node å behandle
+ *   @param   node  -  Aktuell node ï¿½ behandle
  *   @see     besok(...)
  */
 void traverserPreorder(Node* node) {
     if (node) {                                  //  Reell node:
-        gStakk.push(node);                       //  Legger rota på stakken.
+        gStakk.push(node);                       //  Legger rota pï¿½ stakken.
         while (!gStakk.empty()) {                //  Fortsatt noder igjen:
-            node = gStakk.top();   gStakk.pop(); //  Tar av øverste node.
-            besok(node);                         //  Besøker den.
-            if (node->right)  gStakk.push(node->right); //  Push'er evt. høyre
+            node = gStakk.top();   gStakk.pop(); //  Tar av ï¿½verste node.
+            besok(node);                         //  Besï¿½ker den.
+            if (node->right)  gStakk.push(node->right); //  Push'er evt. hï¿½yre
             if (node->left)   gStakk.push(node->left);  //  og venstre subtre.
         }
     }
