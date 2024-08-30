@@ -1,0 +1,93 @@
+﻿/**
+ *   Løsning til eksamen i AlgMet, august 2024, oppgave 1.
+ *
+ *   @file     EX_S24_1.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+    "STROGANOFFF" sorteres vha. Quicksort.
+    Oversikten/tabellen for hver rekursive sortering blir da:
+    (NB: Partisjonselementet er skrevet med STOR bokstav,
+         mens resten er skrevet med små bokstaver.)
+
+                1  2  3  4  5  6  7  8  9 10
+    Initielt:   S  T  R  O  G  A  N  O  F  F
+            
+                f  a  F  o  g  t  n  o  s  r
+                A  f
+                         o  g  o  n  R  s  t
+                         g  N  o  o
+                               O  o
+                                        s  T
+
+
+
+
+OPPGAVE B:
+==========
+
+    "STROGANOFF" satt inn i:
+
+    1)  Heap:      T S R O G A N O F F
+
+
+    2)  Binært søketre:        S
+                             /   \
+                           R       T
+                         /
+                       O  
+                      / \ 
+                     G   O
+                    / \
+                   A   N
+                    \
+                     F
+                      \
+                       F
+
+ 
+    3)  2-3-4 tre:             O
+                           /       \
+                         G           S
+                       /   \       /   \
+                     AFF    N    OR     T
+
+      
+
+
+    4)  Red-Black tre:         O
+                           /       \
+                         G           S
+                       /   \       /   \
+                      F     N     O     T    (eller OR rotert andre veien)
+                    // \\          \\
+                    A   F           R
+
+
+
+
+
+OPPGAVE C:
+==========
+     
+    6 stk:
+                          C - E
+                        /
+                      F
+                    /   \
+              B - A       E - C
+            /       \
+          /           E - F - C
+        D
+          \           E - F - C
+            \       /
+              A - B       C - E
+                    \   /
+                      F 
+                        \
+                          E - C
