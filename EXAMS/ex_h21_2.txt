@@ -1,0 +1,65 @@
+﻿/**
+ *   Løsning til eksamen i AlgMet, desember 2021, oppgave 2.
+ *
+ *   @file     EX_H21_2.TXT
+ *   @author   Frode Haug, NTNU
+ */
+
+
+
+OPPGAVE A:
+==========
+
+                                 H(12345678+91011)
+                               /                   \
+                       H(1234+5678)                H(91011)
+                   /                 \                |
+             H(12+34)            H(56+78)          H(910+11)
+            /       \           /       \         /        \
+         H(1+2)    H(3+4)    H(5+6)    H(7+8)    H(9+10)  H(11)
+        /    \    /    \    /    \    /    \    /    \      |
+       H(1) H(2) H(3) H(4) H(5) H(6) H(7) H(8) H(9) H(10) H(11)
+       --------------------------------------------------------
+        B1   B2   B3   B4   B5   B6   B7   B8   B9   B10   B11
+
+
+
+
+
+OPPGAVE B:
+==========
+
+  Korteste sti fra "A" til ALLE de andre nodene vil involvere kantene:
+
+         AF   AI   BI   CD   CE   CH   CI   GH
+
+
+
+   Prioritetskøen etterhvert:
+                                   B-4i
+                     F-2a          H-5c   H-5c   E-5c
+              I-2a   C-3i   C-3i   E-5c   E-5c   D-5c   D-5c
+         A*   F-2a   B-4i   B-4i   D-5c   D-5c   G-7h   G-7h   G-7h
+
+
+
+
+
+OPPGAVE C:
+==========
+
+   "gForeldre"-arrayen etterhvert:
+
+             A  B  C  D  E  F  G
+      D A:   D  -  -  1  -  -  -
+      F E:   D  -  -  1  F  1  -
+      C A:   D  -  D  2  F  1  -     Weight Balancing
+      F B:   D  F  D  2  F  2  -
+      G A:   D  F  D  3  F  2  D     Weight Balancing
+      F C:   D  F  D  6  F  D  D     Weight Balancing
+      B E:   D  D  D  6  D  D  D     Path Compression
+
+
+   Resulterende skog:      D
+                      / / / \ \ \ 
+                     A B C   E F G
