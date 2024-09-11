@@ -2,22 +2,22 @@
  *   Programeksempel nr 5 - Infix til Postfix regneuttrykk.
  *
  *   Eksempel som viser bruk av stack i et helt konkret og praktisk tilfelle:
- *   Et infix regneuttrykk leses og omgjøres (skrives ut på skjermen) til et
+ *   Et infix regneuttrykk leses og omgj?res (skrives ut p? skjermen) til et
  *   postfix regnuttrykk.
- *   EKS_06_PostfixTilSvar.cpp finner svaret på et slikt postfix-uttrykk.
+ *   EKS_06_PostfixTilSvar.cpp finner svaret p? et slikt postfix-uttrykk.
  *
- *   F.eks.  (( 8 + 12 ) * ( 17 + 4 ))  omgjøres til:   8 12 + 17 4 + *
+ *   F.eks.  (( 8 + 12 ) * ( 17 + 4 ))  omgj?res til:   8 12 + 17 4 + *
  *
  *   Algoritme: - pusher operatorene '+' og '*'
  *              - skriver rett ut igjen sifre/tall
- *              - pop'er og skriver operator når finner en ')' (sluttparentes)
+ *              - pop'er og skriver operator n?r finner en ')' (sluttparentes)
  *              - ignorerer '('  (startparentes)
  *
- *   NB: Infix-utrykket MÅ:
- *       - være et lovlig uttrykk (med korrekt operatorbruk/antall parenteser)
+ *   NB: Infix-utrykket M?:
+ *       - v?re et lovlig uttrykk (med korrekt operatorbruk/antall parenteser)
  *       - kun inneholde operatorene '+' og '*' (i tillegg til '(' og ')')
  *       - starte med '(', og avslutte med ')'
- *       - ha minst EN blank ETTER hvert tall (men ikke nødvendigvis FORAN)
+ *       - ha minst EN blank ETTER hvert tall (men ikke n?dvendigvis FORAN)
  *
  *   @file     EKS_05_InfixTilPostfix.CPP
  *   @author   Frode Haug, NTNU
@@ -32,12 +32,12 @@ using namespace std;
 /**
  *  Skriver HELE en stakks innhold.
  *
- *  @param   st - KOPI av medsendt stack-container (derfor tømmes den)
+ *  @param   st - KOPI av medsendt stack-container (derfor t?mmes den)
  */
 void skriv(stack <char> st)  {
-   while (!st.empty())  {              //  Ennå elementer igjen:
-       cout << ' ' << st.top();        //  Skriver den nåværende første.
-       st.pop();                       //  Tar ut/fjerner den første.
+   while (!st.empty())  {              //  Enn? elementer igjen:
+       cout << ' ' << st.top();        //  Skriver den n?v?rende f?rste.
+       st.pop();                       //  Tar ut/fjerner den f?rste.
    }
    cout << '\n';
 }
@@ -51,21 +51,21 @@ int main()  {
     char tegn;                              //  Innlest tegn fra tastaturet.
 
     cout << "\n\nSkriv et infix-regneuttrykk:\n";
-                                            //  Leser ALLE tegn, også ' '
+                                            //  Leser ALLE tegn, ogs? ' '
     while ((tegn = cin.get()) != '\n') {    //    (blank), frem til '\n':
         if (tegn == ')') {                  //  Sluttparentes funnet:
-            cout << stakk.top();            //  Skriver stakkens øverste tegn.
+            cout << stakk.top();            //  Skriver stakkens ?verste tegn.
             stakk.pop();                    //  Tar ut/fjernet operatoren.
                                             //  Pusher '+' og '*':
         } else if (tegn == '+' || tegn == '*')  stakk.push(tegn);
-                                                //  Så lenge sifre i ETT tall:
+                                                //  S? lenge sifre i ETT tall:
         while (tegn >= '0'  &&  tegn <= '9') {  // Skriver ut flersifret tall:
             cout << tegn;                       // Skriver ETT siffer.
             tegn = cin.get();                   // Leser neste siffer/tegn.
         }
 
         if (tegn != '(')                    //  Skriver ut en blank (viktig at
-            cout << ' ';                    //    gjøres etter hvert tall).
+            cout << ' ';                    //    gj?res etter hvert tall).
 //     skriv(stakk);         //  Kommenter da vekk de 3x andre cout'ene.
                              //  Ignorer duplikate utskriftslinjer!
     }
