@@ -22,7 +22,7 @@ Node *byggTre();
 int finnNoder(const Node *node);
 int finnReferanse(const Node *node);
 int finnFulle(const Node *node);
-Node *finnHoyde(Node *node);
+int finnHoyde(Node *node);
 
 int main() {
 
@@ -69,12 +69,13 @@ Node* byggTre() {
 	return noder[0];
 }
 
-int finnNoder(const Node *node) {		return node ? 1 + finnNoder(node->left) + finnNoder(node->right) : 0; }
+int finnNoder(const Node *node)		{	return node ? 1 + finnNoder(node->left) + finnNoder(node->right) : 0; }
 int finnReferanse(const Node *node) {	return finnNoder(node) + 1; }
-int finnFulle(const Node *node) { return node ? 1 + finnFulle(node->left) + finnFulle(node->right) : 0; }
-int finnHoyde(Node *node) {
-	auto finnHoyde = [finnHoyde](const Node *node) -> int {
-		if (!node) return 0;
-		return 1 + max(finnHoyde(node->left), finnHoyde(node->right));
-	};
-}
+int finnFulle(const Node *node)		{	auto finnFulle = [](const Node* node, const auto& self) -> int { if (!node)
+										return 0; int fullNodeCount = (node->left && node->right) ? 1 : 0; if (fullNodeCount == 1) { std::cout << "Full node: " << node->ID << std::endl; }
+										return fullNodeCount + self(node->left, self) + self(node->right, self); };
+										return finnFulle(node, finnFulle); }
+int finnHoyde(Node *node)			{ 	auto hoyde = [](const Node *n, const auto& hoyde_ref) -> int { if (!n) return 0;
+										return 1 + max(hoyde_ref(n->left, hoyde_ref), hoyde_ref(n->right, hoyde_ref)); };
+										return hoyde(node, hoyde) - 1; }
+
